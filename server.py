@@ -29,9 +29,16 @@ def register():
         isValid = False
         flash('Please enter a first name')
 
+    if not firstName.isalpha():
+        isValid = False
+        flash('Please enter a first name using only alphabetic characters')
+
     if len(lastName) <= 0:
         isValid = False
-        flash('Please enter a last name')
+        flash('Please enter a last name using only alphabetic characters')
+
+    if not lastName.isalpha():
+        isValid = False
 
     if len(password) <= 4:
         isValid = False
@@ -40,6 +47,8 @@ def register():
     if not password == conPassword:
         isValid = False
         flash('Password doesnt match confirm password')
+
+    
     
     if isValid == True:
         mysql = connectToMySQL("basic_registration")
